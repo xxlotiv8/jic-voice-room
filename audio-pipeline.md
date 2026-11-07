@@ -22,17 +22,17 @@ Whisper may print language-detection lines even with verbose=False. Parse only v
 
 ## Synthesize
 
-Use execFile arguments equivalent to:
-`say -v Daniel -r 175 -o reply.wav --data-format=LEI16@24000 --file-format=WAVE -f reply.txt`.
+Use the voice selected in [voice choice](voice-choice.md). The observed macOS form is:
+`say -v <chosen-voice> -r <chosen-rate> -o reply.wav --data-format=LEI16@24000 --file-format=WAVE -f reply.txt`.
 
-For Chinese, Tingting worked. Query `say -v '?'` to verify availability. Write WAV to a real file, not stdout. Read it with Python's wave module and assert mono, 16-bit, 24000 Hz before streaming.
+Daniel at rate 175 and Tingting are examples from one Mac, not required voices. Write WAV to a real file, not stdout. Read it with Python's wave module and assert mono, 16-bit, 24000 Hz before streaming.
 
 ## Publish
 
 Import AudioSource, AudioFrame, LocalAudioTrack, TrackPublishOptions and TrackSource from the installed RTC SDK.
 
 1. Create `new AudioSource(24000,1)`.
-2. Create `LocalAudioTrack.createAudioTrack('Bob synthetic voice',source)`.
+2. Create `LocalAudioTrack.createAudioTrack('synthetic <chosen voice>',source)`.
 3. Set `new TrackPublishOptions().source = TrackSource.SOURCE_MICROPHONE`.
 4. Publish using `room.localParticipant.publishTrack(track,options)`.
 5. Split signed PCM into 480-sample frames (20 ms). Use `new AudioFrame(int16Array,24000,1,int16Array.length)` and await `source.captureFrame(frame)`.

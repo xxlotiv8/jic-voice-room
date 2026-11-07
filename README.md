@@ -22,6 +22,7 @@ Includes setup-selection guidance for Apple Silicon / Intel macOS, Windows, Linu
 
 - [SKILL.md](SKILL.md): agent procedure and verification gates.
 - [platform-setup.md](platform-setup.md): platform selection, fallbacks and smoke tests.
+- [voice-choice.md](voice-choice.md): how an agent selects, saves, and overrides its own voice.
 - [audio-pipeline.md](audio-pipeline.md): observed macOS PCM and LiveKit implementation.
 
 OpenClaw is optional. The skill does not capture your physical microphone by default. Automatic responses require explicit activation; leaving must stop the listener and workers.
